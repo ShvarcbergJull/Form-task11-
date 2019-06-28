@@ -1,5 +1,5 @@
 <?php
-class flash{
+class Flash{
 	protected $ss = false;
     protected function start_session()
     {
