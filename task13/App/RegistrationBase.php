@@ -1,6 +1,7 @@
 <?php 
 namespace App;
 
+include 'Flash.php';
 //error_reporting(0);
 use PDO;
 
@@ -188,11 +189,14 @@ class RegistrationBase
 		$this->pay = isset($_POST['pay']) ? trim($_POST['pay']) : null;
 		$this->jel = isset($_POST['jel']) ? 'yes' : 'no';
 		$this->dateCreate = date('Y-m-d-H-i-s');
+		$mes = new Flash;
+		$mes->set('<h2>Ваша заявка отправлена успешно!</h2>');
 
 		if ($this->validate())
 		{
 			$this->save_in_db();
-			header('Location: /SHU/sign/form.php');
+			echo $mes->get();
+			//header('Location: /SHU/sign/form.php');
 			exit;
 		}
 	}
