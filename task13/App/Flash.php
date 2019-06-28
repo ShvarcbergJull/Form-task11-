@@ -1,4 +1,6 @@
 <?php
+namespace App;
+
 class Flash{
 	protected $ss = false;
     protected function start_session()
@@ -16,12 +18,7 @@ class Flash{
 	public function get(){
 		$this->start_session();
 		$m=$_SESSION['fm'];
+        unset($_SESSION['fm']);
 		return $m;
 	}
-	  public function del(){
-        $this->start_session();
-        if ( ! empty($_SESSION['fm'])){
-            unset($_SESSION['fm']);
-        }
-    }
 }
